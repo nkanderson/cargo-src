@@ -8,16 +8,17 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { rustwReducer, Page } from './reducers';
 import * as actions from './actions';
+import styles from './rustw.css';
 
 import * as utils from './utils';
+import { PageTemplate } from './pages';
 import { TopBarController } from './topbar';
-import { ResultsController, Error } from "./errors";
-import { ErrCodeController } from "./err_code";
 import { FindResults, SearchResults } from "./search";
 import { DirView } from './dirView';
 import { SourceViewController } from './srcView';
@@ -27,10 +28,9 @@ import { Summary } from './summary';
 
 class RustwApp extends React.Component {
     componentWillMount() {
-        $("#measure").hide();
 
         // history.replaceState(MAIN_PAGE_STATE, "");
-        // window.onpopstate = onPopState;    
+        // window.onpopstate = onPopState;
     }
 
     componentDidMount() {
@@ -40,27 +40,34 @@ class RustwApp extends React.Component {
             success: (data) => {
                 CONFIG = data;
             },
+            error: () => {
+              CONFIG = {
+                  "build_command": "cargo check",
+                  "edit_command": "",
+                  "unstable_features": false,
+                  "port": 7878,
+                  "demo_mode": false,
+                  "demo_mode_root_path": "",
+                  "context_lines": 2,
+                  "build_on_load": false,
+                  "source_directory": "src",
+                  "save_analysis": true,
+                  "vcs_link": ""
+              };
+            },
             async: false,
         });
-        if (CONFIG.build_on_load) {
-            store.dispatch(actions.doBuild());
-        }
+        store.dispatch(actions.getSource(CONFIG.source_directory));
     }
 
     render() {
         let divMain;
         switch (this.props.page.type) {
-            case Page.BUILD_RESULTS:
-                divMain = <ResultsController />;
-                break;
-            case Page.ERR_CODE:
-                divMain = <ErrCodeController />;
-                break;
             case Page.SEARCH:
-                divMain = <SearchResults defs={this.props.page.defs} refs={this.props.page.refs} />;
+                divMain = <div id="div_search_results"><SearchResults defs={this.props.page.defs} refs={this.props.page.refs} /></div>;
                 break;
             case Page.FIND:
-                divMain = <FindResults results={this.props.page.results} />;
+                divMain = <div id="div_search_results"><FindResults results={this.props.page.results} /></div>;
                 break;
             case Page.SOURCE:
                 divMain = <SourceViewController path={this.props.page.path} lines={this.props.page.lines} highlight={this.props.page.highlight} scrollTo={this.props.page.lineStart} />;
@@ -69,7 +76,7 @@ class RustwApp extends React.Component {
                 divMain = <DirView file={this.props.page.name} files={this.props.page.files} getSource={this.props.getSource} />;
                 break;
             case Page.LOADING:
-                divMain = "Loading...";
+                divMain = <div id="div_loading">Loading...</div>;
                 break;
             case Page.SUMMARY:
                 divMain = <Summary breadCrumbs={this.props.page.breadCrumbs} parent={this.props.page.parent} signature={this.props.page.signature} doc_summary={this.props.page.doc_summary} doc_rest={this.props.page.doc_rest} children={this.props.page.children} />;
@@ -81,7 +88,6 @@ class RustwApp extends React.Component {
             default:
                 divMain = null;
         }
-
         return <div id="div_app">
             <TopBarController />
             <div id="div_main">
@@ -113,7 +119,11 @@ let store = createStore(rustwReducer, applyMiddleware(thunk));
 export function renderApp() {
     ReactDOM.render(
         <Provider store={store}>
-            <AppController />
+            <Router>
+                <div id="div_app">
+                    <PageTemplate />
+                </div>
+            </Router>
         </Provider>,
         document.getElementById('container')
     );

@@ -85,7 +85,9 @@ function view_in_vcs(target) {
     window.open(CONFIG.vcs_link.replace("$file", file_name).replace("$line", line_number), '_blank');
 }
 
-class SourceView extends React.Component {
+// See https://github.com/Microsoft/TypeScript/issues/18134
+/** @augments {React.Component<object, object>} */
+export class SourceView extends React.Component {
     constructor(props) {
         super(props);
         this.state = { refMenu: null };
@@ -150,19 +152,20 @@ class SourceView extends React.Component {
             refMenu = <RefMenu location={this.state.refMenu} onClose={onClose} target={this.state.refMenu.target} id={this.state.refMenu.id} getSummary={this.props.getSummary} getUses={this.props.getUses} getImpls={this.props.getImpls} />;
         }
 
-        return <div id="div_src_view">
+        return <section id="src"> 
             <BreadCrumbs path={this.props.path} getSource={this.props.getSource} />
-            <br />
-            <div id="div_src_contents">
-                <span className="div_src_line_numbers">
-                    {numbers}
-                </span>
-                <span className="div_src_lines">
-                    {lines}
-                </span>
+            <div id="div_src_view">
+                <div id="div_src_contents">
+                    <span className="div_src_line_numbers">
+                        {numbers}
+                    </span>
+                    <span className="div_src_lines">
+                        {lines}
+                    </span>
+                </div>
+                {refMenu}
             </div>
-            {refMenu}
-        </div>;
+        </section>;
     }
 }
 

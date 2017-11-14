@@ -7,9 +7,10 @@
 // except according to those terms.
 
 import * as actions from './actions';
+const API_URL = process.env.API;
 
 export function make_url(suffix) {
-    return '/' + CONFIG.demo_mode_root_path + suffix;
+    return API_URL + CONFIG.demo_mode_root_path + suffix;
 }
 
 export function highlight_spans(highlight, line_number_prefix, src_line_prefix, css_class) {
@@ -63,7 +64,7 @@ export function request(dispatch, urlStr, success, errStr, suppressMessages) {
     const self = this;
     $.ajax({
         url: self.make_url(urlStr),
-        type: 'POST',
+        type: 'GET',
         dataType: 'JSON',
         cache: false
     })

@@ -31,25 +31,11 @@ module.exports = {
     }]
   },
   devtool: 'source-map',
-  devServer: {
-    contentBase: './static',
-    port: 9000,
-    watchContentBase: true,
-    historyApiFallback: {
-      disableDotRule: true
-    },
-    proxy: {
-      '/static/*': {
-        target: 'http://localhost:9000',
-        pathRewrite: { '^/static': '' }
-      }
-    }
-  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'API': JSON.stringify('http://localhost:3000/'),
-        'NODE_ENV': JSON.stringify('development')
+        'API': JSON.stringify(''),
+        'NODE_ENV': JSON.stringify('production')
       }
     })
   ]

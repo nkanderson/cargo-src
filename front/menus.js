@@ -46,7 +46,7 @@ export class Menu extends React.Component {
                             };
                             return <div className={className} id={i.id} key={i.id} onClick={onClick}>{i.label}</div>;
                         });
-    
+
         if (items.length === 0) {
             this.isEmpty = true;
             return null;
@@ -78,7 +78,7 @@ export class MenuHost extends React.Component {
             this.setState({ menuOpen: { "top": ev.pageY, "left": ev.pageX, target: ev.target }});
             ev.preventDefault();
         };
-        
+
         let onClick = null;
         if (this.leftClick) {
             onClick = contextMenu;

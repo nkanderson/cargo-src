@@ -53,7 +53,7 @@ export class Summary extends React.Component {
         };
         let breadCrumbs = this.props.breadCrumbs.map((bc) => <span>{bc} :: </span>),
             parent = null;
-            
+
         if (this.props.parent) {
             parent = <span className="small_button" id="jump_up" data-link={'summary:' + this.props.parent} onClick={loadLink}>&#x2191;</span>;
         }
@@ -80,7 +80,7 @@ export class Summary extends React.Component {
         let refMenu = null;
         if (!!this.state.refMenu) {
             const onClose = () => this.setState({ refMenu: null });
-            refMenu = <RefMenu location={this.state.refMenu} onClose={onClose} target={this.state.refMenu.target} id={this.state.refMenu.id} />;            
+            refMenu = <RefMenu location={this.state.refMenu} onClose={onClose} target={this.state.refMenu.target} id={this.state.refMenu.id} />;
         }
 
         return <div id="div_summary">
