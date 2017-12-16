@@ -191,7 +191,7 @@ impl<'a> Handler<'a> {
         }
 
         trace!("404 {:?}", file_contents);
-        self.handle_error(req, res, StatusCode::NotFound, "Page not found".to_owned());
+        self.handle_error(req, res, StatusCode::NotFound, "Page not found by the rust server".to_owned());
     }
 
     fn handle_src<'b: 'a, 'k: 'a>(
@@ -216,7 +216,9 @@ impl<'a> Handler<'a> {
         }
 
         let mut path_buf = PathBuf::new();
-        if path[0].is_empty() {
+        if path[0].is_empty() { // TODO: fix panicking:
+                                // thread '<unnamed>' panicked at 'index out of bounds: 
+                                // the len is 0 but the index is 0', src/server.rs:219:12
             path_buf.push("/");
             path = &path[1..];
         }
@@ -739,6 +741,7 @@ fn parse_query_value(query: &Option<String>, key: &str) -> Option<String> {
 }
 
 const STATIC_REQUEST: &'static str = "static";
+const DATA_REQUEST: &'static str = "data";
 const SOURCE_REQUEST: &'static str = "src";
 const PLAIN_TEXT: &'static str = "plain_text";
 const CONFIG_REQUEST: &'static str = "config";
@@ -763,31 +766,59 @@ fn route<'a, 'b: 'a, 'k: 'a>(
         return;
     }
 
-    if path[0] == STATIC_REQUEST {
-        handler.handle_static(req, res, &path[1..]);
-        return;
-    }
-
-    if path[0] == CONFIG_REQUEST {
-        handler.handle_config(req, res);
-        return;
-    }
-
-    if path[0] == PULL_REQUEST {
-        handler.handle_pull(req, res, query);
-        return;
-    }
-
-    if path[0] == SOURCE_REQUEST {
-        let path = &path[1..];
-        // Because a URL ending in "/." is normalised to "/", we miss out on "." as a source path.
-        // We try to correct for that here.
-        if path.len() == 1 && path[0] == "" {
-            handler.handle_src(req, res, &[".".to_owned()]);
-        } else {
-            handler.handle_src(req, res, path);
+    if path[0] == DATA_REQUEST {
+        if path[1] == CONFIG_REQUEST {
+            handler.handle_config(req, res);
+            return;
         }
-        return;
+
+        if path[1] == PULL_REQUEST {
+            handler.handle_pull(req, res, query);
+            return;
+        }
+
+        if path[1] == SOURCE_REQUEST {
+            let path = &path[2..];
+            // Because a URL ending in "/." is normalised to "/", we miss out on "." as a source path.
+            // We try to correct for that here.
+            if path.len() == 1 && path[0] == "" {
+                handler.handle_src(req, res, &[".".to_owned()]);
+            } else {
+                handler.handle_src(req, res, path);
+            }
+            return;
+        }
+
+        if path[1] == FIND_REQUEST {
+            handler.handle_find(req, res, query);
+            return;
+        }
+
+        if path[1] == BUILD_REQUEST {
+            if handler.config.demo_mode {
+                handler.handle_test(req, res);
+            } else {
+                handler.handle_build(req, res);
+            }
+            return;
+        }
+
+        if !handler.config.demo_mode {
+            if path[0] == BUILD_UPDATE_REQUEST {
+                handler.handle_build_updates(req, res);
+                return;
+            }
+
+            if path[0] == EDIT_REQUEST {
+                handler.handle_edit(req, res, query);
+                return;
+            }
+        }
+
+        if path[1] == SEARCH_REQUEST {
+            handler.handle_search(req, res, query);
+            return;
+        }
     }
 
     if path[0] == PLAIN_TEXT {
@@ -795,41 +826,12 @@ fn route<'a, 'b: 'a, 'k: 'a>(
         return;
     }
 
-    if path[0] == SEARCH_REQUEST {
-        handler.handle_search(req, res, query);
+    if path[0] == STATIC_REQUEST {
+        handler.handle_static(req, res, &path[1..]);
         return;
     }
 
-    if path[0] == FIND_REQUEST {
-        handler.handle_find(req, res, query);
-        return;
-    }
-
-    if path[0] == BUILD_REQUEST {
-        if handler.config.demo_mode {
-            handler.handle_test(req, res);
-        } else {
-            handler.handle_build(req, res);
-        }
-        return;
-    }
-
-    if !handler.config.demo_mode {
-        if path[0] == BUILD_UPDATE_REQUEST {
-            handler.handle_build_updates(req, res);
-            return;
-        }
-
-        if path[0] == EDIT_REQUEST {
-            handler.handle_edit(req, res, query);
-            return;
-        }
-    }
-
-    handler.handle_error(
-        req,
-        res,
-        StatusCode::NotFound,
-        format!("Unexpected path: `/{}`", path.join("/")),
-    );
+    // Hand off all other requests to React Router on frontend
+    handler.handle_index(req, res);
+    return;
 }

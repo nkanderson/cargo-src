@@ -24,7 +24,7 @@ export const PageTemplate = () => {
 }
 
 export const Home = () =>
-  <CodeBrowser path="browse/src" />
+  <CodeBrowser path="src" />
 
 export const Search = ({ location }) => {
   const query = qs.parse(location.search).needle;

@@ -34,7 +34,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'API': JSON.stringify(''),
+        'API': JSON.stringify('http://127.0.0.1:7878/data/'),
         'NODE_ENV': JSON.stringify('production')
       }
     })
