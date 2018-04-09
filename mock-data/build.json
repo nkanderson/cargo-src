@@ -1,0 +1,2428 @@
+{
+  "build": [
+    {
+      "id": 1,
+      "messages": [
+        "",
+        "   Compiling libc v0.2.29 (file:///Users/Catalpa/Rust/libc)",
+        "error: Could not compile `libc`.",
+        "To learn more, run the command again with --verbose."
+      ],
+      "errors": [
+        {
+          "id": 1,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 2,
+              "file_name": "src/lib.rs",
+              "byte_start": 6356,
+              "byte_end": 6362,
+              "line_start": 168,
+              "line_end": 168,
+              "column_start": 26,
+              "column_end": 32,
+              "is_primary": true,
+              "text": [
+                "                   size: <span class=\"src_highlight\">size_t</span>) -> c_int;"
+              ],
+              "plain_text": "                   size: size_t) -> c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 3,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 4,
+              "file_name": "src/lib.rs",
+              "byte_start": 7012,
+              "byte_end": 7018,
+              "line_start": 181,
+              "line_end": 181,
+              "column_start": 24,
+              "column_end": 30,
+              "is_primary": true,
+              "text": [
+                "                 size: <span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                 size: size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 5,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 6,
+              "file_name": "src/lib.rs",
+              "byte_start": 7043,
+              "byte_end": 7049,
+              "line_start": 182,
+              "line_end": 182,
+              "column_start": 24,
+              "column_end": 30,
+              "is_primary": true,
+              "text": [
+                "                 nobj: <span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                 nobj: size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 7,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 8,
+              "file_name": "src/lib.rs",
+              "byte_start": 7107,
+              "byte_end": 7113,
+              "line_start": 184,
+              "line_end": 184,
+              "column_start": 21,
+              "column_end": 27,
+              "is_primary": true,
+              "text": [
+                "                 -> <span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "                 -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 9,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 10,
+              "file_name": "src/lib.rs",
+              "byte_start": 7286,
+              "byte_end": 7292,
+              "line_start": 188,
+              "line_end": 188,
+              "column_start": 25,
+              "column_end": 31,
+              "is_primary": true,
+              "text": [
+                "                  size: <span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                  size: size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 11,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 12,
+              "file_name": "src/lib.rs",
+              "byte_start": 7318,
+              "byte_end": 7324,
+              "line_start": 189,
+              "line_end": 189,
+              "column_start": 25,
+              "column_end": 31,
+              "is_primary": true,
+              "text": [
+                "                  nobj: <span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                  nobj: size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 13,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 14,
+              "file_name": "src/lib.rs",
+              "byte_start": 7384,
+              "byte_end": 7390,
+              "line_start": 191,
+              "line_end": 191,
+              "column_start": 22,
+              "column_end": 28,
+              "is_primary": true,
+              "text": [
+                "                  -> <span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "                  -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 15,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 16,
+              "file_name": "src/lib.rs",
+              "byte_start": 8404,
+              "byte_end": 8410,
+              "line_start": 210,
+              "line_end": 210,
+              "column_start": 25,
+              "column_end": 31,
+              "is_primary": true,
+              "text": [
+                "    pub fn calloc(nobj: <span class=\"src_highlight\">size_t</span>, size: size_t) -> *mut c_void;"
+              ],
+              "plain_text": "    pub fn calloc(nobj: size_t, size: size_t) -> *mut c_void;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 17,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 18,
+              "file_name": "src/lib.rs",
+              "byte_start": 8418,
+              "byte_end": 8424,
+              "line_start": 210,
+              "line_end": 210,
+              "column_start": 39,
+              "column_end": 45,
+              "is_primary": true,
+              "text": [
+                "    pub fn calloc(nobj: size_t, size: <span class=\"src_highlight\">size_t</span>) -> *mut c_void;"
+              ],
+              "plain_text": "    pub fn calloc(nobj: size_t, size: size_t) -> *mut c_void;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 19,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 20,
+              "file_name": "src/lib.rs",
+              "byte_start": 8466,
+              "byte_end": 8472,
+              "line_start": 211,
+              "line_end": 211,
+              "column_start": 25,
+              "column_end": 31,
+              "is_primary": true,
+              "text": [
+                "    pub fn malloc(size: <span class=\"src_highlight\">size_t</span>) -> *mut c_void;"
+              ],
+              "plain_text": "    pub fn malloc(size: size_t) -> *mut c_void;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 21,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 22,
+              "file_name": "src/lib.rs",
+              "byte_start": 8531,
+              "byte_end": 8537,
+              "line_start": 212,
+              "line_end": 212,
+              "column_start": 42,
+              "column_end": 48,
+              "is_primary": true,
+              "text": [
+                "    pub fn realloc(p: *mut c_void, size: <span class=\"src_highlight\">size_t</span>) -> *mut c_void;"
+              ],
+              "plain_text": "    pub fn realloc(p: *mut c_void, size: size_t) -> *mut c_void;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 23,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 24,
+              "file_name": "src/lib.rs",
+              "byte_start": 9073,
+              "byte_end": 9079,
+              "line_start": 224,
+              "line_end": 224,
+              "column_start": 61,
+              "column_end": 67,
+              "is_primary": true,
+              "text": [
+                "    pub fn strncpy(dst: *mut c_char, src: *const c_char, n: <span class=\"src_highlight\">size_t</span>)"
+              ],
+              "plain_text": "    pub fn strncpy(dst: *mut c_char, src: *const c_char, n: size_t)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 25,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 26,
+              "file_name": "src/lib.rs",
+              "byte_start": 9242,
+              "byte_end": 9248,
+              "line_start": 227,
+              "line_end": 227,
+              "column_start": 58,
+              "column_end": 64,
+              "is_primary": true,
+              "text": [
+                "    pub fn strncat(s: *mut c_char, ct: *const c_char, n: <span class=\"src_highlight\">size_t</span>) -> *mut c_char;"
+              ],
+              "plain_text": "    pub fn strncat(s: *mut c_char, ct: *const c_char, n: size_t) -> *mut c_char;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 27,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 28,
+              "file_name": "src/lib.rs",
+              "byte_start": 9392,
+              "byte_end": 9398,
+              "line_start": 229,
+              "line_end": 229,
+              "column_start": 61,
+              "column_end": 67,
+              "is_primary": true,
+              "text": [
+                "    pub fn strncmp(cs: *const c_char, ct: *const c_char, n: <span class=\"src_highlight\">size_t</span>) -> c_int;"
+              ],
+              "plain_text": "    pub fn strncmp(cs: *const c_char, ct: *const c_char, n: size_t) -> c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 29,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 30,
+              "file_name": "src/lib.rs",
+              "byte_start": 9663,
+              "byte_end": 9669,
+              "line_start": 233,
+              "line_end": 233,
+              "column_start": 60,
+              "column_end": 66,
+              "is_primary": true,
+              "text": [
+                "    pub fn strspn(cs: *const c_char, ct: *const c_char) -> <span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "    pub fn strspn(cs: *const c_char, ct: *const c_char) -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 31,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 32,
+              "file_name": "src/lib.rs",
+              "byte_start": 9731,
+              "byte_end": 9737,
+              "line_start": 234,
+              "line_end": 234,
+              "column_start": 61,
+              "column_end": 67,
+              "is_primary": true,
+              "text": [
+                "    pub fn strcspn(cs: *const c_char, ct: *const c_char) -> <span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "    pub fn strcspn(cs: *const c_char, ct: *const c_char) -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 33,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 34,
+              "file_name": "src/lib.rs",
+              "byte_start": 9977,
+              "byte_end": 9983,
+              "line_start": 238,
+              "line_end": 238,
+              "column_start": 41,
+              "column_end": 47,
+              "is_primary": true,
+              "text": [
+                "    pub fn strlen(cs: *const c_char) -> <span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "    pub fn strlen(cs: *const c_char) -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 35,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 36,
+              "file_name": "src/lib.rs",
+              "byte_start": 10031,
+              "byte_end": 10037,
+              "line_start": 239,
+              "line_end": 239,
+              "column_start": 47,
+              "column_end": 53,
+              "is_primary": true,
+              "text": [
+                "    pub fn strnlen(cs: *const c_char, maxlen: <span class=\"src_highlight\">size_t</span>) -> size_t;"
+              ],
+              "plain_text": "    pub fn strnlen(cs: *const c_char, maxlen: size_t) -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 37,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 38,
+              "file_name": "src/lib.rs",
+              "byte_start": 10042,
+              "byte_end": 10048,
+              "line_start": 239,
+              "line_end": 239,
+              "column_start": 58,
+              "column_end": 64,
+              "is_primary": true,
+              "text": [
+                "    pub fn strnlen(cs: *const c_char, maxlen: size_t) -> <span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "    pub fn strnlen(cs: *const c_char, maxlen: size_t) -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 39,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 40,
+              "file_name": "src/lib.rs",
+              "byte_start": 10332,
+              "byte_end": 10338,
+              "line_start": 244,
+              "line_end": 244,
+              "column_start": 58,
+              "column_end": 64,
+              "is_primary": true,
+              "text": [
+                "    pub fn strxfrm(s: *mut c_char, ct: *const c_char, n: <span class=\"src_highlight\">size_t</span>) -> size_t;"
+              ],
+              "plain_text": "    pub fn strxfrm(s: *mut c_char, ct: *const c_char, n: size_t) -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 41,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 42,
+              "file_name": "src/lib.rs",
+              "byte_start": 10343,
+              "byte_end": 10349,
+              "line_start": 244,
+              "line_end": 244,
+              "column_start": 69,
+              "column_end": 75,
+              "is_primary": true,
+              "text": [
+                "    pub fn strxfrm(s: *mut c_char, ct: *const c_char, n: size_t) -> <span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "    pub fn strxfrm(s: *mut c_char, ct: *const c_char, n: size_t) -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 43,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 44,
+              "file_name": "src/lib.rs",
+              "byte_start": 10393,
+              "byte_end": 10399,
+              "line_start": 245,
+              "line_end": 245,
+              "column_start": 43,
+              "column_end": 49,
+              "is_primary": true,
+              "text": [
+                "    pub fn wcslen(buf: *const wchar_t) -> <span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "    pub fn wcslen(buf: *const wchar_t) -> size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 45,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 46,
+              "file_name": "src/lib.rs",
+              "byte_start": 10464,
+              "byte_end": 10470,
+              "line_start": 246,
+              "line_end": 246,
+              "column_start": 64,
+              "column_end": 70,
+              "is_primary": true,
+              "text": [
+                "    pub fn wcstombs(dest: *mut c_char, src: *const wchar_t, n: <span class=\"src_highlight\">size_t</span>) -> ::size_t;"
+              ],
+              "plain_text": "    pub fn wcstombs(dest: *mut c_char, src: *const wchar_t, n: size_t) -> ::size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 47,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 48,
+              "file_name": "src/lib.rs",
+              "byte_start": 10477,
+              "byte_end": 10483,
+              "line_start": 246,
+              "line_end": 246,
+              "column_start": 77,
+              "column_end": 83,
+              "is_primary": true,
+              "text": [
+                "    pub fn wcstombs(dest: *mut c_char, src: *const wchar_t, n: size_t) -> ::<span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "    pub fn wcstombs(dest: *mut c_char, src: *const wchar_t, n: size_t) -> ::size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 49,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 50,
+              "file_name": "src/lib.rs",
+              "byte_start": 10536,
+              "byte_end": 10542,
+              "line_start": 248,
+              "line_end": 248,
+              "column_start": 51,
+              "column_end": 57,
+              "is_primary": true,
+              "text": [
+                "    pub fn memchr(cx: *const c_void, c: c_int, n: <span class=\"src_highlight\">size_t</span>) -> *mut c_void;"
+              ],
+              "plain_text": "    pub fn memchr(cx: *const c_void, c: c_int, n: size_t) -> *mut c_void;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 51,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 52,
+              "file_name": "src/lib.rs",
+              "byte_start": 10619,
+              "byte_end": 10625,
+              "line_start": 249,
+              "line_end": 249,
+              "column_start": 60,
+              "column_end": 66,
+              "is_primary": true,
+              "text": [
+                "    pub fn memcmp(cx: *const c_void, ct: *const c_void, n: <span class=\"src_highlight\">size_t</span>) -> c_int;"
+              ],
+              "plain_text": "    pub fn memcmp(cx: *const c_void, ct: *const c_void, n: size_t) -> c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 53,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 54,
+              "file_name": "src/lib.rs",
+              "byte_start": 10697,
+              "byte_end": 10703,
+              "line_start": 250,
+              "line_end": 250,
+              "column_start": 61,
+              "column_end": 67,
+              "is_primary": true,
+              "text": [
+                "    pub fn memcpy(dest: *mut c_void, src: *const c_void, n: <span class=\"src_highlight\">size_t</span>) -> *mut c_void;"
+              ],
+              "plain_text": "    pub fn memcpy(dest: *mut c_void, src: *const c_void, n: size_t) -> *mut c_void;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 55,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 56,
+              "file_name": "src/lib.rs",
+              "byte_start": 10782,
+              "byte_end": 10788,
+              "line_start": 251,
+              "line_end": 251,
+              "column_start": 62,
+              "column_end": 68,
+              "is_primary": true,
+              "text": [
+                "    pub fn memmove(dest: *mut c_void, src: *const c_void, n: <span class=\"src_highlight\">size_t</span>) -> *mut c_void;"
+              ],
+              "plain_text": "    pub fn memmove(dest: *mut c_void, src: *const c_void, n: size_t) -> *mut c_void;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 57,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in this scope",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 58,
+              "file_name": "src/lib.rs",
+              "byte_start": 10856,
+              "byte_end": 10862,
+              "line_start": 252,
+              "line_end": 252,
+              "column_start": 51,
+              "column_end": 57,
+              "is_primary": true,
+              "text": [
+                "    pub fn memset(dest: *mut c_void, c: c_int, n: <span class=\"src_highlight\">size_t</span>) -> *mut c_void;"
+              ],
+              "plain_text": "    pub fn memset(dest: *mut c_void, c: c_int, n: size_t) -> *mut c_void;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 59,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 60,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 352,
+              "byte_end": 358,
+              "line_start": 13,
+              "line_end": 13,
+              "column_start": 27,
+              "column_end": 33,
+              "is_primary": true,
+              "text": [
+                "pub type sighandler_t = ::<span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "pub type sighandler_t = ::size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 61,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 62,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 2416,
+              "byte_end": 2422,
+              "line_start": 102,
+              "line_end": 102,
+              "column_start": 24,
+              "column_end": 30,
+              "is_primary": true,
+              "text": [
+                "        pub iov_len: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "        pub iov_len: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 63,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 64,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 4076,
+              "byte_end": 4082,
+              "line_start": 173,
+              "line_end": 173,
+              "column_start": 26,
+              "column_end": 32,
+              "is_primary": true,
+              "text": [
+                "pub const IF_NAMESIZE: ::<span class=\"src_highlight\">size_t</span> = 16;"
+              ],
+              "plain_text": "pub const IF_NAMESIZE: ::size_t = 16;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 65,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 66,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 8300,
+              "byte_end": 8306,
+              "line_start": 293,
+              "line_end": 293,
+              "column_start": 44,
+              "column_end": 50,
+              "is_primary": true,
+              "text": [
+                "    pub fn snprintf(s: *mut ::c_char, n: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "    pub fn snprintf(s: *mut ::c_char, n: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 67,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 68,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 10607,
+              "byte_end": 10613,
+              "line_start": 332,
+              "line_end": 332,
+              "column_start": 65,
+              "column_end": 71,
+              "is_primary": true,
+              "text": [
+                "    pub fn sendto(socket: ::c_int, buf: *const ::c_void, len: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "    pub fn sendto(socket: ::c_int, buf: *const ::c_void, len: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 69,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 70,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 15119,
+              "byte_end": 15125,
+              "line_start": 418,
+              "line_end": 418,
+              "column_start": 53,
+              "column_end": 59,
+              "is_primary": true,
+              "text": [
+                "                      buf: *mut ::c_char, bufsiz: ::<span class=\"src_highlight\">size_t</span>) -> ::ssize_t;"
+              ],
+              "plain_text": "                      buf: *mut ::c_char, bufsiz: ::size_t) -> ::ssize_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 71,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 72,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 17308,
+              "byte_end": 17314,
+              "line_start": 462,
+              "line_end": 462,
+              "column_start": 45,
+              "column_end": 51,
+              "is_primary": true,
+              "text": [
+                "    pub fn getcwd(buf: *mut c_char, size: ::<span class=\"src_highlight\">size_t</span>) -> *mut c_char;"
+              ],
+              "plain_text": "    pub fn getcwd(buf: *mut c_char, size: ::size_t) -> *mut c_char;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 73,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 74,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 18463,
+              "byte_end": 18469,
+              "line_start": 487,
+              "line_end": 487,
+              "column_start": 32,
+              "column_end": 38,
+              "is_primary": true,
+              "text": [
+                "                      align: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                      align: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 75,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 76,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 18501,
+              "byte_end": 18507,
+              "line_start": 488,
+              "line_end": 488,
+              "column_start": 31,
+              "column_end": 37,
+              "is_primary": true,
+              "text": [
+                "                      size: ::<span class=\"src_highlight\">size_t</span>) -> ::c_int;"
+              ],
+              "plain_text": "                      size: ::size_t) -> ::c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 77,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 78,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 18686,
+              "byte_end": 18692,
+              "line_start": 491,
+              "line_end": 491,
+              "column_start": 59,
+              "column_end": 65,
+              "is_primary": true,
+              "text": [
+                "    pub fn read(fd: ::c_int, buf: *mut ::c_void, count: ::<span class=\"src_highlight\">size_t</span>)"
+              ],
+              "plain_text": "    pub fn read(fd: ::c_int, buf: *mut ::c_void, count: ::size_t)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 79,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 80,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 20153,
+              "byte_end": 20159,
+              "line_start": 520,
+              "line_end": 520,
+              "column_start": 62,
+              "column_end": 68,
+              "is_primary": true,
+              "text": [
+                "    pub fn write(fd: ::c_int, buf: *const ::c_void, count: ::<span class=\"src_highlight\">size_t</span>)"
+              ],
+              "plain_text": "    pub fn write(fd: ::c_int, buf: *const ::c_void, count: ::size_t)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 81,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 82,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 20359,
+              "byte_end": 20365,
+              "line_start": 524,
+              "line_end": 524,
+              "column_start": 60,
+              "column_end": 66,
+              "is_primary": true,
+              "text": [
+                "    pub fn pread(fd: ::c_int, buf: *mut ::c_void, count: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "    pub fn pread(fd: ::c_int, buf: *mut ::c_void, count: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 83,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 84,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 20584,
+              "byte_end": 20590,
+              "line_start": 528,
+              "line_end": 528,
+              "column_start": 63,
+              "column_end": 69,
+              "is_primary": true,
+              "text": [
+                "    pub fn pwrite(fd: ::c_int, buf: *const ::c_void, count: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "    pub fn pwrite(fd: ::c_int, buf: *const ::c_void, count: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 85,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 86,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 21030,
+              "byte_end": 21036,
+              "line_start": 539,
+              "line_end": 539,
+              "column_start": 48,
+              "column_end": 54,
+              "is_primary": true,
+              "text": [
+                "    pub fn mlock(addr: *const ::c_void, len: ::<span class=\"src_highlight\">size_t</span>) -> ::c_int;"
+              ],
+              "plain_text": "    pub fn mlock(addr: *const ::c_void, len: ::size_t) -> ::c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 87,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 88,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 21099,
+              "byte_end": 21105,
+              "line_start": 540,
+              "line_end": 540,
+              "column_start": 50,
+              "column_end": 56,
+              "is_primary": true,
+              "text": [
+                "    pub fn munlock(addr: *const ::c_void, len: ::<span class=\"src_highlight\">size_t</span>) -> ::c_int;"
+              ],
+              "plain_text": "    pub fn munlock(addr: *const ::c_void, len: ::size_t) -> ::c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 89,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 90,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 21371,
+              "byte_end": 21377,
+              "line_start": 547,
+              "line_end": 547,
+              "column_start": 24,
+              "column_end": 30,
+              "is_primary": true,
+              "text": [
+                "                len: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                len: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 91,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 92,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 21691,
+              "byte_end": 21697,
+              "line_start": 555,
+              "line_end": 555,
+              "column_start": 47,
+              "column_end": 53,
+              "is_primary": true,
+              "text": [
+                "    pub fn munmap(addr: *mut ::c_void, len: ::<span class=\"src_highlight\">size_t</span>) -> ::c_int;"
+              ],
+              "plain_text": "    pub fn munmap(addr: *mut ::c_void, len: ::size_t) -> ::c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 93,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 94,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 25042,
+              "byte_end": 25048,
+              "line_start": 624,
+              "line_end": 624,
+              "column_start": 52,
+              "column_end": 58,
+              "is_primary": true,
+              "text": [
+                "                                     stack_size: ::<span class=\"src_highlight\">size_t</span>) -> ::c_int;"
+              ],
+              "plain_text": "                                     stack_size: ::size_t) -> ::c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 95,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 96,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 29990,
+              "byte_end": 29996,
+              "line_start": 702,
+              "line_end": 702,
+              "column_start": 33,
+              "column_end": 39,
+              "is_primary": true,
+              "text": [
+                "                      buflen: ::<span class=\"src_highlight\">size_t</span>) -> ::c_int;"
+              ],
+              "plain_text": "                      buflen: ::size_t) -> ::c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 97,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 98,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 33403,
+              "byte_end": 33409,
+              "line_start": 771,
+              "line_end": 771,
+              "column_start": 52,
+              "column_end": 58,
+              "is_primary": true,
+              "text": [
+                "    pub fn gethostname(name: *mut ::c_char, len: ::<span class=\"src_highlight\">size_t</span>) -> ::c_int;"
+              ],
+              "plain_text": "    pub fn gethostname(name: *mut ::c_char, len: ::size_t) -> ::c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 99,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 100,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 33800,
+              "byte_end": 33806,
+              "line_start": 778,
+              "line_end": 778,
+              "column_start": 63,
+              "column_end": 69,
+              "is_primary": true,
+              "text": [
+                "    pub fn send(socket: ::c_int, buf: *const ::c_void, len: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "    pub fn send(socket: ::c_int, buf: *const ::c_void, len: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 101,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 102,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 34021,
+              "byte_end": 34027,
+              "line_start": 782,
+              "line_end": 782,
+              "column_start": 61,
+              "column_end": 67,
+              "is_primary": true,
+              "text": [
+                "    pub fn recv(socket: ::c_int, buf: *mut ::c_void, len: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "    pub fn recv(socket: ::c_int, buf: *mut ::c_void, len: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 103,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 104,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 36070,
+              "byte_end": 36076,
+              "line_start": 824,
+              "line_end": 824,
+              "column_start": 30,
+              "column_end": 36,
+              "is_primary": true,
+              "text": [
+                "                    bufsz: ::<span class=\"src_highlight\">size_t</span>)"
+              ],
+              "plain_text": "                    bufsz: ::size_t)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 105,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 106,
+              "file_name": "src/unix/bsd/mod.rs",
+              "byte_start": 11709,
+              "byte_end": 11715,
+              "line_start": 378,
+              "line_end": 378,
+              "column_start": 33,
+              "column_end": 39,
+              "is_primary": true,
+              "text": [
+                "                      buflen: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                      buflen: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 107,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 108,
+              "file_name": "src/unix/bsd/mod.rs",
+              "byte_start": 11995,
+              "byte_end": 12001,
+              "line_start": 384,
+              "line_end": 384,
+              "column_start": 33,
+              "column_end": 39,
+              "is_primary": true,
+              "text": [
+                "                      buflen: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                      buflen: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 109,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 110,
+              "file_name": "src/unix/bsd/mod.rs",
+              "byte_start": 13147,
+              "byte_end": 13153,
+              "line_start": 409,
+              "line_end": 409,
+              "column_start": 54,
+              "column_end": 60,
+              "is_primary": true,
+              "text": [
+                "    pub fn posix_madvise(addr: *mut ::c_void, len: ::<span class=\"src_highlight\">size_t</span>, advice: ::c_int)"
+              ],
+              "plain_text": "    pub fn posix_madvise(addr: *mut ::c_void, len: ::size_t, advice: ::c_int)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 111,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 112,
+              "file_name": "src/unix/bsd/mod.rs",
+              "byte_start": 13879,
+              "byte_end": 13885,
+              "line_start": 425,
+              "line_end": 425,
+              "column_start": 48,
+              "column_end": 54,
+              "is_primary": true,
+              "text": [
+                "    pub fn madvise(addr: *mut ::c_void, len: ::<span class=\"src_highlight\">size_t</span>, advice: ::c_int)"
+              ],
+              "plain_text": "    pub fn madvise(addr: *mut ::c_void, len: ::size_t, advice: ::c_int)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 113,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 114,
+              "file_name": "src/unix/bsd/mod.rs",
+              "byte_start": 14151,
+              "byte_end": 14157,
+              "line_start": 431,
+              "line_end": 431,
+              "column_start": 46,
+              "column_end": 52,
+              "is_primary": true,
+              "text": [
+                "    pub fn msync(addr: *mut ::c_void, len: ::<span class=\"src_highlight\">size_t</span>, flags: ::c_int) -> ::c_int;"
+              ],
+              "plain_text": "    pub fn msync(addr: *mut ::c_void, len: ::size_t, flags: ::c_int) -> ::c_int;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 115,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 116,
+              "file_name": "src/unix/bsd/mod.rs",
+              "byte_start": 14363,
+              "byte_end": 14369,
+              "line_start": 435,
+              "line_end": 435,
+              "column_start": 65,
+              "column_end": 71,
+              "is_primary": true,
+              "text": [
+                "    pub fn recvfrom(socket: ::c_int, buf: *mut ::c_void, len: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "    pub fn recvfrom(socket: ::c_int, buf: *mut ::c_void, len: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 117,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 118,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 845,
+              "byte_end": 851,
+              "line_start": 33,
+              "line_end": 33,
+              "column_start": 27,
+              "column_end": 33,
+              "is_primary": true,
+              "text": [
+                "        pub aio_nbytes: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "        pub aio_nbytes: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 119,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 120,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 1358,
+              "byte_end": 1364,
+              "line_start": 51,
+              "line_end": 51,
+              "column_start": 26,
+              "column_end": 32,
+              "is_primary": true,
+              "text": [
+                "        pub gl_pathc:  ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "        pub gl_pathc:  ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 121,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 122,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 1419,
+              "byte_end": 1425,
+              "line_start": 53,
+              "line_end": 53,
+              "column_start": 26,
+              "column_end": 32,
+              "is_primary": true,
+              "text": [
+                "        pub gl_offs:   ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "        pub gl_offs:   ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 123,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 124,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 4414,
+              "byte_end": 4420,
+              "line_start": 173,
+              "line_end": 173,
+              "column_start": 24,
+              "column_end": 30,
+              "is_primary": true,
+              "text": [
+                "        pub ss_size: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "        pub ss_size: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 125,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 126,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 28159,
+              "byte_end": 28165,
+              "line_start": 899,
+              "line_end": 899,
+              "column_start": 32,
+              "column_end": 38,
+              "is_primary": true,
+              "text": [
+                "pub const PTHREAD_STACK_MIN: ::<span class=\"src_highlight\">size_t</span> = 8192;"
+              ],
+              "plain_text": "pub const PTHREAD_STACK_MIN: ::size_t = 8192;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 127,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 128,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 40869,
+              "byte_end": 40875,
+              "line_start": 1243,
+              "line_end": 1243,
+              "column_start": 23,
+              "column_end": 29,
+              "is_primary": true,
+              "text": [
+                "pub const SIGSTKSZ: ::<span class=\"src_highlight\">size_t</span> = 131072;"
+              ],
+              "plain_text": "pub const SIGSTKSZ: ::size_t = 131072;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 129,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 130,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 57681,
+              "byte_end": 57687,
+              "line_start": 1680,
+              "line_end": 1680,
+              "column_start": 50,
+              "column_end": 56,
+              "is_primary": true,
+              "text": [
+                "    pub fn mincore(addr: *const ::c_void, len: ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "    pub fn mincore(addr: *const ::c_void, len: ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 131,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 132,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 57878,
+              "byte_end": 57884,
+              "line_start": 1684,
+              "line_end": 1684,
+              "column_start": 42,
+              "column_end": 48,
+              "is_primary": true,
+              "text": [
+                "                           sizep: *mut ::<span class=\"src_highlight\">size_t</span>)"
+              ],
+              "plain_text": "                           sizep: *mut ::size_t)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 133,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 134,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 58084,
+              "byte_end": 58090,
+              "line_start": 1688,
+              "line_end": 1688,
+              "column_start": 49,
+              "column_end": 55,
+              "is_primary": true,
+              "text": [
+                "    pub fn mprotect(addr: *mut ::c_void, len: ::<span class=\"src_highlight\">size_t</span>, prot: ::c_int)"
+              ],
+              "plain_text": "    pub fn mprotect(addr: *mut ::c_void, len: ::size_t, prot: ::c_int)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 135,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 136,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 58363,
+              "byte_end": 58369,
+              "line_start": 1694,
+              "line_end": 1694,
+              "column_start": 35,
+              "column_end": 41,
+              "is_primary": true,
+              "text": [
+                "                  oldlenp: *mut ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                  oldlenp: *mut ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 137,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 138,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 58438,
+              "byte_end": 58444,
+              "line_start": 1696,
+              "line_end": 1696,
+              "column_start": 29,
+              "column_end": 35,
+              "is_primary": true,
+              "text": [
+                "                  newlen: ::<span class=\"src_highlight\">size_t</span>)"
+              ],
+              "plain_text": "                  newlen: ::size_t)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 139,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 140,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 58608,
+              "byte_end": 58614,
+              "line_start": 1700,
+              "line_end": 1700,
+              "column_start": 41,
+              "column_end": 47,
+              "is_primary": true,
+              "text": [
+                "                        oldlenp: *mut ::<span class=\"src_highlight\">size_t</span>,"
+              ],
+              "plain_text": "                        oldlenp: *mut ::size_t,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 141,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 142,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 58695,
+              "byte_end": 58701,
+              "line_start": 1702,
+              "line_end": 1702,
+              "column_start": 35,
+              "column_end": 41,
+              "is_primary": true,
+              "text": [
+                "                        newlen: ::<span class=\"src_highlight\">size_t</span>)"
+              ],
+              "plain_text": "                        newlen: ::size_t)\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 143,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 144,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 59056,
+              "byte_end": 59062,
+              "line_start": 1708,
+              "line_end": 1708,
+              "column_start": 63,
+              "column_end": 69,
+              "is_primary": true,
+              "text": [
+                "    pub fn pthread_get_stacksize_np(thread: ::pthread_t) -> ::<span class=\"src_highlight\">size_t</span>;"
+              ],
+              "plain_text": "    pub fn pthread_get_stacksize_np(thread: ::pthread_t) -> ::size_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 145,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 146,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 62752,
+              "byte_end": 62758,
+              "line_start": 1781,
+              "line_end": 1781,
+              "column_start": 51,
+              "column_end": 57,
+              "is_primary": true,
+              "text": [
+                "                    value: *mut ::c_void, size: ::<span class=\"src_highlight\">size_t</span>, position: u32,"
+              ],
+              "plain_text": "                    value: *mut ::c_void, size: ::size_t, position: u32,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 147,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 148,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 62938,
+              "byte_end": 62944,
+              "line_start": 1784,
+              "line_end": 1784,
+              "column_start": 52,
+              "column_end": 58,
+              "is_primary": true,
+              "text": [
+                "                     value: *mut ::c_void, size: ::<span class=\"src_highlight\">size_t</span>, position: u32,"
+              ],
+              "plain_text": "                     value: *mut ::c_void, size: ::size_t, position: u32,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 149,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 150,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 63130,
+              "byte_end": 63136,
+              "line_start": 1787,
+              "line_end": 1787,
+              "column_start": 53,
+              "column_end": 59,
+              "is_primary": true,
+              "text": [
+                "                    value: *const ::c_void, size: ::<span class=\"src_highlight\">size_t</span>, position: u32,"
+              ],
+              "plain_text": "                    value: *const ::c_void, size: ::size_t, position: u32,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 151,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 152,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 63316,
+              "byte_end": 63322,
+              "line_start": 1790,
+              "line_end": 1790,
+              "column_start": 54,
+              "column_end": 60,
+              "is_primary": true,
+              "text": [
+                "                     value: *const ::c_void, size: ::<span class=\"src_highlight\">size_t</span>, position: u32,"
+              ],
+              "plain_text": "                     value: *const ::c_void, size: ::size_t, position: u32,\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 153,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 154,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 63482,
+              "byte_end": 63488,
+              "line_start": 1793,
+              "line_end": 1793,
+              "column_start": 30,
+              "column_end": 36,
+              "is_primary": true,
+              "text": [
+                "                     size: ::<span class=\"src_highlight\">size_t</span>, flags: ::c_int) -> ::ssize_t;"
+              ],
+              "plain_text": "                     size: ::size_t, flags: ::c_int) -> ::ssize_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 155,
+          "message": "cannot find type `<code class=\"code\">size_t</code>` in the crate root",
+          "code": {
+            "code": "E0412",
+            "explanation": "\nThe type name used is not in scope.\n\nErroneous code examples:\n\n```compile_fail,E0412\nimpl Something {} // error: type name `Something` is not in scope\n\n// or:\n\ntrait Foo {\n    fn bar(N); // error: type name `N` is not in scope\n}\n\n// or:\n\nfn foo(x: T) {} // type name `T` is not in scope\n```\n\nTo fix this error, please verify you didn't misspell the type name, you did\ndeclare it or imported it into the scope. Examples:\n\n```\nstruct Something;\n\nimpl Something {} // ok!\n\n// or:\n\ntrait Foo {\n    type N;\n\n    fn bar(_: Self::N); // ok!\n}\n\n// or:\n\nfn foo<T>(x: T) {} // ok!\n```\n\nAnother case that causes this error is when a type is imported into a parent\nmodule. To fix this, you can follow the suggestion and use File directly or\n`use super::File;` which will import the types from the parent namespace. An\nexample that causes this error is below:\n\n```compile_fail,E0412\nuse std::fs::File;\n\nmod foo {\n    fn some_function(f: File) {}\n}\n```\n\n```\nuse std::fs::File;\n\nmod foo {\n    // either\n    use super::File;\n    // or\n    // use std::fs::File;\n    fn foo(f: File) {}\n}\n# fn main() {} // don't insert it for us; that'll break imports\n```\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 156,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 63611,
+              "byte_end": 63617,
+              "line_start": 1795,
+              "line_end": 1795,
+              "column_start": 31,
+              "column_end": 37,
+              "is_primary": true,
+              "text": [
+                "                      size: ::<span class=\"src_highlight\">size_t</span>, flags: ::c_int) -> ::ssize_t;"
+              ],
+              "plain_text": "                      size: ::size_t, flags: ::c_int) -> ::ssize_t;\n",
+              "label": "did you mean `ssize_t`?"
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 157,
+          "message": "the trait `<code class=\"code\">Copy</code>` may not be implemented for this type",
+          "code": {
+            "code": "E0204",
+            "explanation": "\nAn attempt to implement the `Copy` trait for a struct failed because one of the\nfields does not implement `Copy`. To fix this, you must implement `Copy` for the\nmentioned field. Note that this may not be possible, as in the example of\n\n```compile_fail,E0204\nstruct Foo {\n    foo : Vec<u32>,\n}\n\nimpl Copy for Foo { }\n```\n\nThis fails because `Vec<T>` does not implement `Copy` for any `T`.\n\nHere's another example that will fail:\n\n```compile_fail,E0204\n#[derive(Copy)]\nstruct Foo<'a> {\n    ty: &'a mut bool,\n}\n```\n\nThis fails because `&mut T` is not `Copy`, even when `T` is `Copy` (this\ndiffers from the behavior for `&T`, which is always `Copy`).\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 158,
+              "file_name": "src/unix/mod.rs",
+              "byte_start": 2401,
+              "byte_end": 2422,
+              "line_start": 102,
+              "line_end": 102,
+              "column_start": 9,
+              "column_end": 30,
+              "is_primary": false,
+              "text": [
+                "        <span class=\"src_highlight\">pub iov_len: ::size_t</span>,"
+              ],
+              "plain_text": "        pub iov_len: ::size_t,\n",
+              "label": "this field does not implement `Copy`"
+            },
+            {
+              "id": 159,
+              "file_name": "src/macros.rs",
+              "byte_start": 1243,
+              "byte_end": 1254,
+              "line_start": 44,
+              "line_end": 44,
+              "column_start": 14,
+              "column_end": 25,
+              "is_primary": true,
+              "text": [
+                "        impl <span class=\"src_highlight\">::dox::Copy</span> for $i {}"
+              ],
+              "plain_text": "        impl ::dox::Copy for $i {}\n",
+              "label": ""
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 160,
+          "message": "the trait `<code class=\"code\">Copy</code>` may not be implemented for this type",
+          "code": {
+            "code": "E0204",
+            "explanation": "\nAn attempt to implement the `Copy` trait for a struct failed because one of the\nfields does not implement `Copy`. To fix this, you must implement `Copy` for the\nmentioned field. Note that this may not be possible, as in the example of\n\n```compile_fail,E0204\nstruct Foo {\n    foo : Vec<u32>,\n}\n\nimpl Copy for Foo { }\n```\n\nThis fails because `Vec<T>` does not implement `Copy` for any `T`.\n\nHere's another example that will fail:\n\n```compile_fail,E0204\n#[derive(Copy)]\nstruct Foo<'a> {\n    ty: &'a mut bool,\n}\n```\n\nThis fails because `&mut T` is not `Copy`, even when `T` is `Copy` (this\ndiffers from the behavior for `&T`, which is always `Copy`).\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 161,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 827,
+              "byte_end": 851,
+              "line_start": 33,
+              "line_end": 33,
+              "column_start": 9,
+              "column_end": 33,
+              "is_primary": false,
+              "text": [
+                "        <span class=\"src_highlight\">pub aio_nbytes: ::size_t</span>,"
+              ],
+              "plain_text": "        pub aio_nbytes: ::size_t,\n",
+              "label": "this field does not implement `Copy`"
+            },
+            {
+              "id": 162,
+              "file_name": "src/macros.rs",
+              "byte_start": 1243,
+              "byte_end": 1254,
+              "line_start": 44,
+              "line_end": 44,
+              "column_start": 14,
+              "column_end": 25,
+              "is_primary": true,
+              "text": [
+                "        impl <span class=\"src_highlight\">::dox::Copy</span> for $i {}"
+              ],
+              "plain_text": "        impl ::dox::Copy for $i {}\n",
+              "label": ""
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 163,
+          "message": "the trait `<code class=\"code\">Copy</code>` may not be implemented for this type",
+          "code": {
+            "code": "E0204",
+            "explanation": "\nAn attempt to implement the `Copy` trait for a struct failed because one of the\nfields does not implement `Copy`. To fix this, you must implement `Copy` for the\nmentioned field. Note that this may not be possible, as in the example of\n\n```compile_fail,E0204\nstruct Foo {\n    foo : Vec<u32>,\n}\n\nimpl Copy for Foo { }\n```\n\nThis fails because `Vec<T>` does not implement `Copy` for any `T`.\n\nHere's another example that will fail:\n\n```compile_fail,E0204\n#[derive(Copy)]\nstruct Foo<'a> {\n    ty: &'a mut bool,\n}\n```\n\nThis fails because `&mut T` is not `Copy`, even when `T` is `Copy` (this\ndiffers from the behavior for `&T`, which is always `Copy`).\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 164,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 1341,
+              "byte_end": 1364,
+              "line_start": 51,
+              "line_end": 51,
+              "column_start": 9,
+              "column_end": 32,
+              "is_primary": false,
+              "text": [
+                "        <span class=\"src_highlight\">pub gl_pathc:  ::size_t</span>,"
+              ],
+              "plain_text": "        pub gl_pathc:  ::size_t,\n",
+              "label": "this field does not implement `Copy`"
+            },
+            {
+              "id": 165,
+              "file_name": "src/macros.rs",
+              "byte_start": 1243,
+              "byte_end": 1254,
+              "line_start": 44,
+              "line_end": 44,
+              "column_start": 14,
+              "column_end": 25,
+              "is_primary": true,
+              "text": [
+                "        impl <span class=\"src_highlight\">::dox::Copy</span> for $i {}"
+              ],
+              "plain_text": "        impl ::dox::Copy for $i {}\n",
+              "label": ""
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 166,
+          "message": "the trait `<code class=\"code\">Copy</code>` may not be implemented for this type",
+          "code": {
+            "code": "E0204",
+            "explanation": "\nAn attempt to implement the `Copy` trait for a struct failed because one of the\nfields does not implement `Copy`. To fix this, you must implement `Copy` for the\nmentioned field. Note that this may not be possible, as in the example of\n\n```compile_fail,E0204\nstruct Foo {\n    foo : Vec<u32>,\n}\n\nimpl Copy for Foo { }\n```\n\nThis fails because `Vec<T>` does not implement `Copy` for any `T`.\n\nHere's another example that will fail:\n\n```compile_fail,E0204\n#[derive(Copy)]\nstruct Foo<'a> {\n    ty: &'a mut bool,\n}\n```\n\nThis fails because `&mut T` is not `Copy`, even when `T` is `Copy` (this\ndiffers from the behavior for `&T`, which is always `Copy`).\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 167,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 4229,
+              "byte_end": 4261,
+              "line_start": 166,
+              "line_end": 166,
+              "column_start": 9,
+              "column_end": 41,
+              "is_primary": false,
+              "text": [
+                "        <span class=\"src_highlight\">pub sa_sigaction: ::sighandler_t</span>,"
+              ],
+              "plain_text": "        pub sa_sigaction: ::sighandler_t,\n",
+              "label": "this field does not implement `Copy`"
+            },
+            {
+              "id": 168,
+              "file_name": "src/macros.rs",
+              "byte_start": 1243,
+              "byte_end": 1254,
+              "line_start": 44,
+              "line_end": 44,
+              "column_start": 14,
+              "column_end": 25,
+              "is_primary": true,
+              "text": [
+                "        impl <span class=\"src_highlight\">::dox::Copy</span> for $i {}"
+              ],
+              "plain_text": "        impl ::dox::Copy for $i {}\n",
+              "label": ""
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 169,
+          "message": "the trait `<code class=\"code\">Copy</code>` may not be implemented for this type",
+          "code": {
+            "code": "E0204",
+            "explanation": "\nAn attempt to implement the `Copy` trait for a struct failed because one of the\nfields does not implement `Copy`. To fix this, you must implement `Copy` for the\nmentioned field. Note that this may not be possible, as in the example of\n\n```compile_fail,E0204\nstruct Foo {\n    foo : Vec<u32>,\n}\n\nimpl Copy for Foo { }\n```\n\nThis fails because `Vec<T>` does not implement `Copy` for any `T`.\n\nHere's another example that will fail:\n\n```compile_fail,E0204\n#[derive(Copy)]\nstruct Foo<'a> {\n    ty: &'a mut bool,\n}\n```\n\nThis fails because `&mut T` is not `Copy`, even when `T` is `Copy` (this\ndiffers from the behavior for `&T`, which is always `Copy`).\n"
+          },
+          "level": "error",
+          "spans": [
+            {
+              "id": 170,
+              "file_name": "src/unix/bsd/apple/mod.rs",
+              "byte_start": 4399,
+              "byte_end": 4420,
+              "line_start": 173,
+              "line_end": 173,
+              "column_start": 9,
+              "column_end": 30,
+              "is_primary": false,
+              "text": [
+                "        <span class=\"src_highlight\">pub ss_size: ::size_t</span>,"
+              ],
+              "plain_text": "        pub ss_size: ::size_t,\n",
+              "label": "this field does not implement `Copy`"
+            },
+            {
+              "id": 171,
+              "file_name": "src/macros.rs",
+              "byte_start": 1243,
+              "byte_end": 1254,
+              "line_start": 44,
+              "line_end": 44,
+              "column_start": 14,
+              "column_end": 25,
+              "is_primary": true,
+              "text": [
+                "        impl <span class=\"src_highlight\">::dox::Copy</span> for $i {}"
+              ],
+              "plain_text": "        impl ::dox::Copy for $i {}\n",
+              "label": ""
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": 172,
+          "message": "aborting due to 83 previous errors",
+          "code": null,
+          "level": "error",
+          "spans": [],
+          "children": []
+        }
+      ],
+      "push_data_key": "904160000"
+    }
+  ]
+}

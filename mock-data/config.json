@@ -1,0 +1,13 @@
+{
+    "build_command": "cargo check",
+    "edit_command": "",
+    "unstable_features": false,
+    "port": 7878,
+    "demo_mode": false,
+    "demo_mode_root_path": "",
+    "context_lines": 2,
+    "build_on_load": true,
+    "source_directory": "src",
+    "save_analysis": true,
+    "vcs_link": ""
+}

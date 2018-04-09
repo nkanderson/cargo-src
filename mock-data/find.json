@@ -1,0 +1,48 @@
+{
+  "find": [
+    {
+      "impls": 8,
+      "results": [
+          {
+              "file_name": "src/lib.rs",
+              "lines": [
+                  {
+                      "line_start": 36,
+                      "column_start": 6,
+                      "column_end": 16,
+                      "line": "<span class='kw'>impl</span> <span class='ident  class_id class_id_8 src_link' data-impls='2' title='PanicGuardasdf { message }\n\n Once this object is created, it can only be destroyed in an orderly\n fashion.  Attempting to clean it up from a panic handler will abort the\n process.\n' data-link='src/lib.rs:31:12:31:26'>PanicGuard</span> {"
+                  },
+                  {
+                      "line_start": 46,
+                      "column_start": 15,
+                      "column_end": 25,
+                      "line": "<span class='kw'>impl</span> <span class='ident' data-impls='0'>Drop</span> <span class='kw'>for</span> <span class='ident  class_id class_id_8 src_link' data-impls='2' data-link='src/lib.rs:31:12:31:26' title='PanicGuardasdf { message }\n\n Once this object is created, it can only be destroyed in an orderly\n fashion.  Attempting to clean it up from a panic handler will abort the\n process.\n'>PanicGuard</span> {"
+                  }
+              ]
+          }
+      ]
+    },
+    {
+      "impls": 10,
+      "results": [
+          {
+              "file_name": "src/impls10.rs",
+              "lines": [
+                  {
+                      "line_start": 36,
+                      "column_start": 6,
+                      "column_end": 16,
+                      "line": "<span class='kw'>impl</span> <span class='ident  class_id class_id_8 src_link' data-impls='2' title='PanicGuardasdf { message }\n\n Once this object is created, it can only be destroyed in an orderly\n fashion.  Attempting to clean it up from a panic handler will abort the\n process.\n' data-link='src/lib.rs:31:12:31:26'>PanicGuard</span> {"
+                  },
+                  {
+                      "line_start": 46,
+                      "column_start": 15,
+                      "column_end": 25,
+                      "line": "<span class='kw'>impl</span> <span class='ident' data-impls='0'>Drop</span> <span class='kw'>for</span> <span class='ident  class_id class_id_8 src_link' data-impls='2' data-link='src/lib.rs:31:12:31:26' title='PanicGuardasdf { message }\n\n Once this object is created, it can only be destroyed in an orderly\n fashion.  Attempting to clean it up from a panic handler will abort the\n process.\n'>PanicGuard</span> {"
+                  }
+              ]
+          }
+      ]
+    }
+  ]
+}

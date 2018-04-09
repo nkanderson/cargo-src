@@ -1,25 +1,52 @@
+const path = require("path");
+
 module.exports = {
   entry: "./static/rustw.ts",
   output: {
-    filename: "./static/rustw.out.js",
-    libraryTarget: 'var',
-    library: 'Rustw'
+    filename: "rustw.out.js",
+    libraryTarget: "var",
+    library: "Rustw",
+    path: path.resolve(__dirname, "static"),
   },
+  mode: "development",
   resolve: {
     extensions: [".js", ".ts", ".tsx"]
   },
   module: {
-    loaders: [
+    rules: [
     {
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
+      loader: "babel-loader"
     },
     {
       test: /\.tsx?$/,
       exclude: /node_modules/,
-      loader: 'ts-loader'
+      loader: "ts-loader"
     }]
   },
-  devtool: 'source-map'
+  devtool: "source-map",
+  devServer: {
+    publicPath: "/static/",
+    port: 9000,
+    watchContentBase: true,
+    historyApiFallback: {
+      disableDotRule: true
+    },
+    proxy: [
+      {
+        context: [
+          "/build",
+          "/config",
+          "/find",
+          "/search",
+          "/src",
+          "/status",
+          "/symbol_roots",
+          "/tree"
+        ],
+        target: "http://localhost:8080"
+      },
+    ]
+  },
 }

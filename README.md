@@ -126,6 +126,12 @@ export DYLD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$DYLD_LIBRARY_PATH
 ```
 
 
+### Frontend development on cargo-src
+
+To start a mock API and webpack-dev-server for frontend development, run `npm run dev` from the cargo-src project directory root. This will concurrently run `dev:api` and `dev:app` from `package.json` scripts.
+
+
+
 ## Customisation
 
 Create a `rustw.toml` file in your project's directory. See [src/config.rs](src/config.rs)

@@ -1,0 +1,691 @@
+{
+  "Directory": {
+    "path": [
+      "/",
+      "Users",
+      "test",
+      "Rust",
+      "rustw-test"
+    ],
+    "files": [
+      {
+        "kind": {
+          "DirectoryTree": [
+            {
+              "kind": {
+                "DirectoryTree": [
+                  {
+                    "kind": "File",
+                    "name": "applypatch-msg.sample",
+                    "path": "/Users/test/Rust/rustw-test/.git/hooks/applypatch-msg.sample"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "commit-msg.sample",
+                    "path": "/Users/test/Rust/rustw-test/.git/hooks/commit-msg.sample"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "post-update.sample",
+                    "path": "/Users/test/Rust/rustw-test/.git/hooks/post-update.sample"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "pre-applypatch.sample",
+                    "path": "/Users/test/Rust/rustw-test/.git/hooks/pre-applypatch.sample"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "pre-commit.sample",
+                    "path": "/Users/test/Rust/rustw-test/.git/hooks/pre-commit.sample"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "pre-push.sample",
+                    "path": "/Users/test/Rust/rustw-test/.git/hooks/pre-push.sample"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "pre-rebase.sample",
+                    "path": "/Users/test/Rust/rustw-test/.git/hooks/pre-rebase.sample"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "prepare-commit-msg.sample",
+                    "path": "/Users/test/Rust/rustw-test/.git/hooks/prepare-commit-msg.sample"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "update.sample",
+                    "path": "/Users/test/Rust/rustw-test/.git/hooks/update.sample"
+                  }
+                ]
+              },
+              "name": "hooks",
+              "path": "/Users/test/Rust/rustw-test/.git/hooks"
+            },
+            {
+              "kind": {
+                "DirectoryTree": [
+                  {
+                    "kind": "File",
+                    "name": "exclude",
+                    "path": "/Users/test/Rust/rustw-test/.git/info/exclude"
+                  }
+                ]
+              },
+              "name": "info",
+              "path": "/Users/test/Rust/rustw-test/.git/info"
+            },
+            {
+              "kind": {
+                "DirectoryTree": [
+                  {
+                    "kind": {
+                      "DirectoryTree": [
+                        {
+                          "kind": {
+                            "DirectoryTree": [
+                              {
+                                "kind": "File",
+                                "name": "master",
+                                "path": "/Users/test/Rust/rustw-test/.git/logs/refs/heads/master"
+                              }
+                            ]
+                          },
+                          "name": "heads",
+                          "path": "/Users/test/Rust/rustw-test/.git/logs/refs/heads"
+                        },
+                        {
+                          "kind": {
+                            "DirectoryTree": [
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": "File",
+                                      "name": "HEAD",
+                                      "path": "/Users/test/Rust/rustw-test/.git/logs/refs/remotes/origin/HEAD"
+                                    }
+                                  ]
+                                },
+                                "name": "origin",
+                                "path": "/Users/test/Rust/rustw-test/.git/logs/refs/remotes/origin"
+                              }
+                            ]
+                          },
+                          "name": "remotes",
+                          "path": "/Users/test/Rust/rustw-test/.git/logs/refs/remotes"
+                        }
+                      ]
+                    },
+                    "name": "refs",
+                    "path": "/Users/test/Rust/rustw-test/.git/logs/refs"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "HEAD",
+                    "path": "/Users/test/Rust/rustw-test/.git/logs/HEAD"
+                  }
+                ]
+              },
+              "name": "logs",
+              "path": "/Users/test/Rust/rustw-test/.git/logs"
+            },
+            {
+              "kind": {
+                "DirectoryTree": [
+                  {
+                    "kind": {
+                      "DirectoryTree": []
+                    },
+                    "name": "info",
+                    "path": "/Users/test/Rust/rustw-test/.git/objects/info"
+                  },
+                  {
+                    "kind": {
+                      "DirectoryTree": [
+                        {
+                          "kind": "File",
+                          "name": "pack-27f5819770dbe864538b700f026aa8d7686bafc6.idx",
+                          "path": "/Users/test/Rust/rustw-test/.git/objects/pack/pack-27f5819770dbe864538b700f026aa8d7686bafc6.idx"
+                        },
+                        {
+                          "kind": "File",
+                          "name": "pack-27f5819770dbe864538b700f026aa8d7686bafc6.pack",
+                          "path": "/Users/test/Rust/rustw-test/.git/objects/pack/pack-27f5819770dbe864538b700f026aa8d7686bafc6.pack"
+                        }
+                      ]
+                    },
+                    "name": "pack",
+                    "path": "/Users/test/Rust/rustw-test/.git/objects/pack"
+                  }
+                ]
+              },
+              "name": "objects",
+              "path": "/Users/test/Rust/rustw-test/.git/objects"
+            },
+            {
+              "kind": {
+                "DirectoryTree": [
+                  {
+                    "kind": {
+                      "DirectoryTree": [
+                        {
+                          "kind": "File",
+                          "name": "master",
+                          "path": "/Users/test/Rust/rustw-test/.git/refs/heads/master"
+                        }
+                      ]
+                    },
+                    "name": "heads",
+                    "path": "/Users/test/Rust/rustw-test/.git/refs/heads"
+                  },
+                  {
+                    "kind": {
+                      "DirectoryTree": [
+                        {
+                          "kind": {
+                            "DirectoryTree": [
+                              {
+                                "kind": "File",
+                                "name": "HEAD",
+                                "path": "/Users/test/Rust/rustw-test/.git/refs/remotes/origin/HEAD"
+                              }
+                            ]
+                          },
+                          "name": "origin",
+                          "path": "/Users/test/Rust/rustw-test/.git/refs/remotes/origin"
+                        }
+                      ]
+                    },
+                    "name": "remotes",
+                    "path": "/Users/test/Rust/rustw-test/.git/refs/remotes"
+                  },
+                  {
+                    "kind": {
+                      "DirectoryTree": []
+                    },
+                    "name": "tags",
+                    "path": "/Users/test/Rust/rustw-test/.git/refs/tags"
+                  }
+                ]
+              },
+              "name": "refs",
+              "path": "/Users/test/Rust/rustw-test/.git/refs"
+            },
+            {
+              "kind": "File",
+              "name": "HEAD",
+              "path": "/Users/test/Rust/rustw-test/.git/HEAD"
+            },
+            {
+              "kind": "File",
+              "name": "config",
+              "path": "/Users/test/Rust/rustw-test/.git/config"
+            },
+            {
+              "kind": "File",
+              "name": "description",
+              "path": "/Users/test/Rust/rustw-test/.git/description"
+            },
+            {
+              "kind": "File",
+              "name": "index",
+              "path": "/Users/test/Rust/rustw-test/.git/index"
+            },
+            {
+              "kind": "File",
+              "name": "packed-refs",
+              "path": "/Users/test/Rust/rustw-test/.git/packed-refs"
+            }
+          ]
+        },
+        "name": ".git",
+        "path": "/Users/test/Rust/rustw-test/.git"
+      },
+      {
+        "kind": {
+          "DirectoryTree": [
+            {
+              "kind": {
+                "DirectoryTree": [
+                  {
+                    "kind": {
+                      "DirectoryTree": [
+                        {
+                          "kind": "File",
+                          "name": "mod.rs",
+                          "path": "/Users/test/Rust/rustw-test/src/sub_mod/sub_sub_mod/mod.rs"
+                        }
+                      ]
+                    },
+                    "name": "sub_sub_mod",
+                    "path": "/Users/test/Rust/rustw-test/src/sub_mod/sub_sub_mod"
+                  },
+                  {
+                    "kind": "File",
+                    "name": "mod.rs",
+                    "path": "/Users/test/Rust/rustw-test/src/sub_mod/mod.rs"
+                  }
+                ]
+              },
+              "name": "sub_mod",
+              "path": "/Users/test/Rust/rustw-test/src/sub_mod"
+            },
+            {
+              "kind": "File",
+              "name": "main.rs",
+              "path": "/Users/test/Rust/rustw-test/src/main.rs"
+            }
+          ]
+        },
+        "name": "src",
+        "path": "/Users/test/Rust/rustw-test/src"
+      },
+      {
+        "kind": {
+          "DirectoryTree": [
+            {
+              "kind": {
+                "DirectoryTree": [
+                  {
+                    "kind": {
+                      "DirectoryTree": [
+                        {
+                          "kind": {
+                            "DirectoryTree": [
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": "File",
+                                      "name": "dep-lib-derive_new-868da89b7ff7bfb8",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/derive-new-868da89b7ff7bfb8/dep-lib-derive_new-868da89b7ff7bfb8"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-derive_new-868da89b7ff7bfb8",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/derive-new-868da89b7ff7bfb8/lib-derive_new-868da89b7ff7bfb8"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-derive_new-868da89b7ff7bfb8.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/derive-new-868da89b7ff7bfb8/lib-derive_new-868da89b7ff7bfb8.json"
+                                    }
+                                  ]
+                                },
+                                "name": "derive-new-868da89b7ff7bfb8",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/derive-new-868da89b7ff7bfb8"
+                              },
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": "File",
+                                      "name": "bin-hello-0b70c9b71c5c8f84",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/hello-0b70c9b71c5c8f84/bin-hello-0b70c9b71c5c8f84"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "bin-hello-0b70c9b71c5c8f84.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/hello-0b70c9b71c5c8f84/bin-hello-0b70c9b71c5c8f84.json"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "dep-bin-hello-0b70c9b71c5c8f84",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/hello-0b70c9b71c5c8f84/dep-bin-hello-0b70c9b71c5c8f84"
+                                    }
+                                  ]
+                                },
+                                "name": "hello-0b70c9b71c5c8f84",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/hello-0b70c9b71c5c8f84"
+                              },
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": "File",
+                                      "name": "dep-lib-quote-ae068733fe3088ca",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/quote-ae068733fe3088ca/dep-lib-quote-ae068733fe3088ca"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-quote-ae068733fe3088ca",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/quote-ae068733fe3088ca/lib-quote-ae068733fe3088ca"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-quote-ae068733fe3088ca.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/quote-ae068733fe3088ca/lib-quote-ae068733fe3088ca.json"
+                                    }
+                                  ]
+                                },
+                                "name": "quote-ae068733fe3088ca",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/quote-ae068733fe3088ca"
+                              },
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": "File",
+                                      "name": "dep-lib-syn-24a22cfef1cf0479",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/syn-24a22cfef1cf0479/dep-lib-syn-24a22cfef1cf0479"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-syn-24a22cfef1cf0479",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/syn-24a22cfef1cf0479/lib-syn-24a22cfef1cf0479"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-syn-24a22cfef1cf0479.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/syn-24a22cfef1cf0479/lib-syn-24a22cfef1cf0479.json"
+                                    }
+                                  ]
+                                },
+                                "name": "syn-24a22cfef1cf0479",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/syn-24a22cfef1cf0479"
+                              },
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": "File",
+                                      "name": "dep-lib-unicode_xid-8602e1a18ed85454",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/unicode-xid-8602e1a18ed85454/dep-lib-unicode_xid-8602e1a18ed85454"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-unicode_xid-8602e1a18ed85454",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/unicode-xid-8602e1a18ed85454/lib-unicode_xid-8602e1a18ed85454"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-unicode_xid-8602e1a18ed85454.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/unicode-xid-8602e1a18ed85454/lib-unicode_xid-8602e1a18ed85454.json"
+                                    }
+                                  ]
+                                },
+                                "name": "unicode-xid-8602e1a18ed85454",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/unicode-xid-8602e1a18ed85454"
+                              },
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": "File",
+                                      "name": "dep-lib-zero-42dba5a70e74eb04",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/zero-42dba5a70e74eb04/dep-lib-zero-42dba5a70e74eb04"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-zero-42dba5a70e74eb04",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/zero-42dba5a70e74eb04/lib-zero-42dba5a70e74eb04"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "lib-zero-42dba5a70e74eb04.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/zero-42dba5a70e74eb04/lib-zero-42dba5a70e74eb04.json"
+                                    }
+                                  ]
+                                },
+                                "name": "zero-42dba5a70e74eb04",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint/zero-42dba5a70e74eb04"
+                              }
+                            ]
+                          },
+                          "name": ".fingerprint",
+                          "path": "/Users/test/Rust/rustw-test/target/rls/debug/.fingerprint"
+                        },
+                        {
+                          "kind": {
+                            "DirectoryTree": []
+                          },
+                          "name": "build",
+                          "path": "/Users/test/Rust/rustw-test/target/rls/debug/build"
+                        },
+                        {
+                          "kind": {
+                            "DirectoryTree": [
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": {
+                                        "DirectoryTree": [
+                                          {
+                                            "kind": {
+                                              "DirectoryTree": [
+                                                {
+                                                  "kind": {
+                                                    "DirectoryTree": [
+                                                      {
+                                                        "kind": "File",
+                                                        "name": "libderive_new-868da89b7ff7bfb8.dylib",
+                                                        "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libderive_new-868da89b7ff7bfb8.dylib.dSYM/Contents/Resources/DWARF/libderive_new-868da89b7ff7bfb8.dylib"
+                                                      }
+                                                    ]
+                                                  },
+                                                  "name": "DWARF",
+                                                  "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libderive_new-868da89b7ff7bfb8.dylib.dSYM/Contents/Resources/DWARF"
+                                                }
+                                              ]
+                                            },
+                                            "name": "Resources",
+                                            "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libderive_new-868da89b7ff7bfb8.dylib.dSYM/Contents/Resources"
+                                          },
+                                          {
+                                            "kind": "File",
+                                            "name": "Info.plist",
+                                            "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libderive_new-868da89b7ff7bfb8.dylib.dSYM/Contents/Info.plist"
+                                          }
+                                        ]
+                                      },
+                                      "name": "Contents",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libderive_new-868da89b7ff7bfb8.dylib.dSYM/Contents"
+                                    }
+                                  ]
+                                },
+                                "name": "libderive_new-868da89b7ff7bfb8.dylib.dSYM",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libderive_new-868da89b7ff7bfb8.dylib.dSYM"
+                              },
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": "File",
+                                      "name": "hello-0b70c9b71c5c8f84.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/save-analysis/hello-0b70c9b71c5c8f84.json"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "libquote-ae068733fe3088ca.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/save-analysis/libquote-ae068733fe3088ca.json"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "libsyn-24a22cfef1cf0479.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/save-analysis/libsyn-24a22cfef1cf0479.json"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "libzero-42dba5a70e74eb04.json",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/save-analysis/libzero-42dba5a70e74eb04.json"
+                                    }
+                                  ]
+                                },
+                                "name": "save-analysis",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/save-analysis"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "derive_new-868da89b7ff7bfb8.d",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/derive_new-868da89b7ff7bfb8.d"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "hello-0b70c9b71c5c8f84.d",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/hello-0b70c9b71c5c8f84.d"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "libderive_new-868da89b7ff7bfb8.dylib",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libderive_new-868da89b7ff7bfb8.dylib"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "libquote-ae068733fe3088ca.rlib",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libquote-ae068733fe3088ca.rlib"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "libsyn-24a22cfef1cf0479.rlib",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libsyn-24a22cfef1cf0479.rlib"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "libunicode_xid-8602e1a18ed85454.rlib",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libunicode_xid-8602e1a18ed85454.rlib"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "libzero-42dba5a70e74eb04.rmeta",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/libzero-42dba5a70e74eb04.rmeta"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "quote-ae068733fe3088ca.d",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/quote-ae068733fe3088ca.d"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "syn-24a22cfef1cf0479.d",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/syn-24a22cfef1cf0479.d"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "unicode_xid-8602e1a18ed85454.d",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/unicode_xid-8602e1a18ed85454.d"
+                              },
+                              {
+                                "kind": "File",
+                                "name": "zero-42dba5a70e74eb04.d",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps/zero-42dba5a70e74eb04.d"
+                              }
+                            ]
+                          },
+                          "name": "deps",
+                          "path": "/Users/test/Rust/rustw-test/target/rls/debug/deps"
+                        },
+                        {
+                          "kind": {
+                            "DirectoryTree": []
+                          },
+                          "name": "examples",
+                          "path": "/Users/test/Rust/rustw-test/target/rls/debug/examples"
+                        },
+                        {
+                          "kind": {
+                            "DirectoryTree": [
+                              {
+                                "kind": {
+                                  "DirectoryTree": [
+                                    {
+                                      "kind": {
+                                        "DirectoryTree": [
+                                          {
+                                            "kind": "File",
+                                            "name": "dep-graph.bin",
+                                            "path": "/Users/test/Rust/rustw-test/target/rls/debug/incremental/hello-1xvlpymgbb31m/s-ezxvjuh9un-1h2j5uf-2wt7fywv1ko9m/dep-graph.bin"
+                                          },
+                                          {
+                                            "kind": "File",
+                                            "name": "query-cache.bin",
+                                            "path": "/Users/test/Rust/rustw-test/target/rls/debug/incremental/hello-1xvlpymgbb31m/s-ezxvjuh9un-1h2j5uf-2wt7fywv1ko9m/query-cache.bin"
+                                          },
+                                          {
+                                            "kind": "File",
+                                            "name": "work-products.bin",
+                                            "path": "/Users/test/Rust/rustw-test/target/rls/debug/incremental/hello-1xvlpymgbb31m/s-ezxvjuh9un-1h2j5uf-2wt7fywv1ko9m/work-products.bin"
+                                          }
+                                        ]
+                                      },
+                                      "name": "s-ezxvjuh9un-1h2j5uf-2wt7fywv1ko9m",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/incremental/hello-1xvlpymgbb31m/s-ezxvjuh9un-1h2j5uf-2wt7fywv1ko9m"
+                                    },
+                                    {
+                                      "kind": "File",
+                                      "name": "s-ezxvjuh9un-1h2j5uf.lock",
+                                      "path": "/Users/test/Rust/rustw-test/target/rls/debug/incremental/hello-1xvlpymgbb31m/s-ezxvjuh9un-1h2j5uf.lock"
+                                    }
+                                  ]
+                                },
+                                "name": "hello-1xvlpymgbb31m",
+                                "path": "/Users/test/Rust/rustw-test/target/rls/debug/incremental/hello-1xvlpymgbb31m"
+                              }
+                            ]
+                          },
+                          "name": "incremental",
+                          "path": "/Users/test/Rust/rustw-test/target/rls/debug/incremental"
+                        },
+                        {
+                          "kind": {
+                            "DirectoryTree": []
+                          },
+                          "name": "native",
+                          "path": "/Users/test/Rust/rustw-test/target/rls/debug/native"
+                        },
+                        {
+                          "kind": "File",
+                          "name": ".cargo-lock",
+                          "path": "/Users/test/Rust/rustw-test/target/rls/debug/.cargo-lock"
+                        },
+                        {
+                          "kind": "File",
+                          "name": "libhello.d",
+                          "path": "/Users/test/Rust/rustw-test/target/rls/debug/libhello.d"
+                        }
+                      ]
+                    },
+                    "name": "debug",
+                    "path": "/Users/test/Rust/rustw-test/target/rls/debug"
+                  }
+                ]
+              },
+              "name": "rls",
+              "path": "/Users/test/Rust/rustw-test/target/rls"
+            }
+          ]
+        },
+        "name": "target",
+        "path": "/Users/test/Rust/rustw-test/target"
+      },
+      {
+        "kind": "File",
+        "name": "Cargo.lock",
+        "path": "/Users/test/Rust/rustw-test/Cargo.lock"
+      },
+      {
+        "kind": "File",
+        "name": "Cargo.toml",
+        "path": "/Users/test/Rust/rustw-test/Cargo.toml"
+      },
+      {
+        "kind": "File",
+        "name": "build.sh",
+        "path": "/Users/test/Rust/rustw-test/build.sh"
+      },
+      {
+        "kind": "File",
+        "name": "run.sh",
+        "path": "/Users/test/Rust/rustw-test/run.sh"
+      },
+      {
+        "kind": "File",
+        "name": "rustw.toml",
+        "path": "/Users/test/Rust/rustw-test/rustw.toml"
+      }
+    ]
+  }
+}

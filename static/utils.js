@@ -71,7 +71,7 @@ export function request(urlStr, success, errStr, app) {
     const self = this;
     $.ajax({
         url: self.make_url(urlStr),
-        type: 'POST',
+        type: 'GET',
         dataType: 'JSON',
         cache: false
     })

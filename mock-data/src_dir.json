@@ -1,0 +1,33 @@
+{
+    "Directory": {
+        "path": [
+            "src"
+        ],
+        "files": [
+            {
+                "kind": "Directory",
+                "name": "unix"
+            },
+            {
+                "kind": "File",
+                "name": "dox.rs"
+            },
+            {
+                "kind": "File",
+                "name": "lib.rs"
+            },
+            {
+                "kind": "File",
+                "name": "macros.rs"
+            },
+            {
+                "kind": "File",
+                "name": "redox.rs"
+            },
+            {
+                "kind": "File",
+                "name": "windows.rs"
+            }
+        ]
+    }
+}

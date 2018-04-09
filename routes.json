@@ -1,0 +1,10 @@
+{
+  "/config": "/config/1",
+  "/search\\?needle=:needle": "/search/1",
+  "/search\\?id=:id": "/search/2",
+  "/find\\?impls=:id": "/find/:id",
+  "/src/*": "/src/2",
+  "/status": "/status/1",
+  "/symbol_roots/*": "/symbol_roots/1",
+  "/tree/*": "/tree/1"
+}
