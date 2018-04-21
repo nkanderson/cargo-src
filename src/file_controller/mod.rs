@@ -14,99 +14,49 @@ use std::str;
 
 use analysis::{AnalysisHost, Id, Target};
 use span;
-use vfs::Vfs;
 
 use super::highlight;
 
 // FIXME maximum size and evication policy
 // FIXME keep timestamps and check on every read. Then don't empty on build.
 
-pub struct Cache {
-    files: Vfs<VfsUserData>,
+mod file_cache;
+mod results;
+use file_controller::results::{
+    SearchResult,
+    DefResult,
+    FileResult,
+    LineResult,
+    FindResult,
+    SymbolResult
+};
+
+pub struct Highlighter {
     analysis: AnalysisHost,
-    project_dir: PathBuf,
+    project_dir: PathBuf
+}
+
+impl Highlighter {
+    pub fn new() -> Highlighter {
+        Highlighter {
+            analysis: AnalysisHost::new(Target::Debug),
+            project_dir: env::current_dir().unwrap()
+        }
+    }
+}
+
+pub struct FileController {
+    highlighter: Highlighter,
+    cache: file_cache::Cache
 }
 
 type Span = span::Span<span::ZeroIndexed>;
 
-#[derive(Serialize, Debug, Clone)]
-pub struct SearchResult {
-    pub defs: Vec<DefResult>,
-}
-
-#[derive(Serialize, Debug, Clone)]
-pub struct DefResult {
-    pub file: String,
-    pub line: LineResult,
-    pub refs: Vec<FileResult>,
-}
-
-#[derive(Serialize, Debug, Clone, Eq, PartialEq, Ord, PartialOrd)]
-pub struct FileResult {
-    pub file_name: String,
-    pub lines: Vec<LineResult>,
-}
-
-#[derive(Serialize, Debug, Clone, Eq, PartialEq, Ord, PartialOrd)]
-pub struct LineResult {
-    pub line_start: u32,
-    pub column_start: u32,
-    pub column_end: u32,
-    pub line: String,
-}
-
-impl LineResult {
-    fn new(span: &Span, line: String) -> LineResult {
-        LineResult {
-            line_start: span.range.row_start.one_indexed().0,
-            column_start: span.range.col_start.one_indexed().0,
-            column_end: span.range.col_end.one_indexed().0,
-            line: line,
-        }
-    }
-}
-
-#[derive(Serialize, Debug, Clone)]
-pub struct FindResult {
-    pub results: Vec<FileResult>,
-}
-
-#[derive(Serialize, Debug, Clone)]
-pub struct SymbolResult {
-    pub id: String,
-    pub name: String,
-    pub file_name: String,
-    pub line_start: u32,
-}
-
-// Our data which we attach to files in the VFS.
-struct VfsUserData {
-    highlighted_lines: Vec<String>,
-}
-
-impl VfsUserData {
-    fn new() -> VfsUserData {
-        VfsUserData {
-            highlighted_lines: vec![],
-        }
-    }
-}
-
-macro_rules! vfs_err {
-    ($e: expr) => {
-        {
-            let r: Result<_, String> = $e.map_err(|e| e.into());
-            r
-        }
-    }
-}
-
-impl Cache {
-    pub fn new() -> Cache {
-        Cache {
-            files: Vfs::new(),
-            analysis: AnalysisHost::new(Target::Debug),
-            project_dir: env::current_dir().unwrap(),
+impl FileController {
+    pub fn new() -> FileController {
+        FileController {
+            highlighter: Highlighter::new(),
+            cache: file_cache::Cache::new()
         }
     }
 
@@ -116,55 +66,11 @@ impl Cache {
         line_start: span::Row<span::ZeroIndexed>,
         line_end: span::Row<span::ZeroIndexed>,
     ) -> Result<String, String> {
-        vfs_err!(self.files.load_file(path))?;
-        vfs_err!(self.files.load_lines(path, line_start, line_end))
+        self.cache.get_lines(path, line_start, line_end)
     }
 
     pub fn get_highlighted(&self, path: &Path) -> Result<Vec<String>, String> {
-        vfs_err!(self.files.load_file(path))?;
-        vfs_err!(
-            self.files
-                .ensure_user_data(path, |_| Ok(VfsUserData::new()))
-        )?;
-        vfs_err!(self.files.with_user_data(path, |u| {
-            let (text, u) = u?;
-            let text = match text {
-                Some(t) => t,
-                None => return Err(::vfs::Error::BadFileKind),
-            };
-            if u.highlighted_lines.is_empty() {
-                if let Some(ext) = path.extension() {
-                    if ext == "rs" {
-                        let highlighted = highlight::highlight(
-                            &self.analysis,
-                            &self.project_dir,
-                            path.to_str().unwrap().to_owned(),
-                            text.to_owned(),
-                        );
-
-                        let mut highlighted_lines = vec![];
-                        for line in highlighted.lines() {
-                            highlighted_lines.push(line.replace("<br>", "\n"));
-                        }
-                        if text.ends_with('\n') {
-                            highlighted_lines.push(String::new());
-                        }
-                        u.highlighted_lines = highlighted_lines;
-                    }
-                }
-
-                // Don't try to highlight non-Rust files (and cope with highlighting failure).
-                if u.highlighted_lines.is_empty() {
-                    let mut highlighted_lines: Vec<String> = text.lines().map(|s| s.to_owned()).collect();
-                    if text.ends_with('\n') {
-                        highlighted_lines.push(String::new());
-                    }
-                    u.highlighted_lines = highlighted_lines;
-                }
-            }
-
-            Ok(u.highlighted_lines.clone())
-        }))
+        self.cache.get_highlighted(path, &self.highlighter)
     }
 
     pub fn get_highlighted_line(
@@ -178,13 +84,13 @@ impl Cache {
 
     pub fn update_analysis(&self) {
         println!("Processing analysis...");
-        self.analysis
-            .reload_with_blacklist(&self.project_dir, &self.project_dir, &::blacklist::CRATE_BLACKLIST)
+        self.highlighter.analysis
+            .reload_with_blacklist(&self.highlighter.project_dir, &self.highlighter.project_dir, &::blacklist::CRATE_BLACKLIST)
             .unwrap();
 
         // FIXME Possibly extreme, could invalidate by crate or by file. Also, only
         // need to invalidate Rust files.
-        self.files.clear();
+        self.cache.files.clear();
 
         println!("done");
     }
@@ -192,12 +98,12 @@ impl Cache {
     // FIXME we should cache this information rather than compute every time.
     pub fn get_symbol_roots(&self) -> Result<Vec<SymbolResult>, String> {
         let all_crates = self
-            .analysis
+            .highlighter.analysis
             .def_roots()
             .unwrap_or_else(|_| vec![])
             .into_iter()
             .filter_map(|(id, name)| {
-                let span = self.analysis.get_def(id).ok()?.span;
+                let span = self.highlighter.analysis.get_def(id).ok()?.span;
                 Some(SymbolResult {
                     id: id.to_string(),
                     name,
@@ -225,7 +131,7 @@ impl Cache {
 
     // FIXME we should indicate whether the symbol has children or not
     pub fn get_symbol_children(&self, id: Id) -> Result<Vec<SymbolResult>, String> {
-        self.analysis
+        self.highlighter.analysis
             .for_each_child_def(id, |id, def| {
                 let span = &def.span;
                 SymbolResult {
@@ -245,7 +151,7 @@ impl Cache {
     pub fn ident_search(&self, needle: &str) -> Result<SearchResult, String> {
         // First see if the needle corresponds to any definitions, if it does, get a list of the
         // ids, otherwise, return an empty search result.
-        let ids = match self.analysis.search_for_id(needle) {
+        let ids = match self.highlighter.analysis.search_for_id(needle) {
             Ok(ids) => ids.to_owned(),
             Err(_) => {
                 return Ok(SearchResult {
@@ -258,7 +164,7 @@ impl Cache {
     }
 
     pub fn find_impls(&self, id: Id) -> Result<FindResult, String> {
-        let impls = self.analysis
+        let impls = self.highlighter.analysis
             .find_impls(id)
             .map_err(|_| "No impls found".to_owned())?;
         Ok(FindResult {
@@ -271,7 +177,7 @@ impl Cache {
 
         for id in ids {
             // If all_refs.len() > 0, the first entry will be the def.
-            let all_refs = self.analysis.find_all_refs_by_id(id);
+            let all_refs = self.highlighter.analysis.find_all_refs_by_id(id);
             let mut all_refs = match all_refs {
                 Err(_) => return Err("Error finding references".to_owned()),
                 Ok(ref all_refs) if all_refs.is_empty() => continue,
@@ -299,7 +205,7 @@ impl Cache {
     fn make_file_path(&self, span: &Span) -> PathBuf {
         let file_path = Path::new(&span.file);
         file_path
-            .strip_prefix(&self.project_dir)
+            .strip_prefix(&self.highlighter.project_dir)
             .unwrap_or(file_path)
             .to_owned()
     }

@@ -9,7 +9,7 @@
 use analysis;
 use build::{self, BuildArgs};
 use config::Config;
-use file_cache::Cache;
+use file_controller::FileController;
 use listings::{Listing, DirectoryListing};
 use futures;
 use futures::Future;
@@ -41,7 +41,7 @@ include!(concat!(env!("OUT_DIR"), "/lookup_static.rs"));
 pub struct Server {
     builder: build::Builder,
     pub config: Arc<Config>,
-    file_cache: Arc<Cache>,
+    file_cache: Arc<FileController>,
     status: Status,
 }
 
@@ -57,7 +57,7 @@ impl Server {
         let mut instance = Server {
             builder: build::Builder::new(config.clone(), build_args),
             config: config,
-            file_cache: Arc::new(Cache::new()),
+            file_cache: Arc::new(FileController::new()),
             status: Status::new(),
         };
 
