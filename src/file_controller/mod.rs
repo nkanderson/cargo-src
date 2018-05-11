@@ -8,18 +8,20 @@
 
 use cargo_metadata;
 use std::collections::HashMap;
-use std::env;
+// use std::env;
 use std::path::{Path, PathBuf};
 use std::str;
 
-use analysis::{AnalysisHost, Id, Target};
+use analysis::Id;
 use span;
 
-use super::highlight;
+// use highlight::Highlighter;
+use highlight;
 
 // FIXME maximum size and evication policy
 // FIXME keep timestamps and check on every read. Then don't empty on build.
 
+// mod highlight;
 mod file_cache;
 mod results;
 use file_controller::results::{
@@ -31,22 +33,23 @@ use file_controller::results::{
     SymbolResult
 };
 
-pub struct Highlighter {
-    analysis: AnalysisHost,
-    project_dir: PathBuf
-}
+// pub struct Highlighter {
+//     analysis: AnalysisHost,
+//     project_dir: PathBuf
+// }
 
-impl Highlighter {
-    pub fn new() -> Highlighter {
-        Highlighter {
-            analysis: AnalysisHost::new(Target::Debug),
-            project_dir: env::current_dir().unwrap()
-        }
-    }
-}
+// impl Highlighter {
+//     pub fn new() -> Highlighter {
+//         Highlighter {
+//             analysis: AnalysisHost::new(Target::Debug),
+//             project_dir: env::current_dir().unwrap()
+//         }
+//     }
+// }
 
 pub struct FileController {
-    highlighter: Highlighter,
+    highlighter: highlight::Highlighter,
+    // highlighter: &'a Highlighter,
     cache: file_cache::Cache
 }
 
@@ -55,7 +58,7 @@ type Span = span::Span<span::ZeroIndexed>;
 impl FileController {
     pub fn new() -> FileController {
         FileController {
-            highlighter: Highlighter::new(),
+            highlighter: highlight::Highlighter::new(),
             cache: file_cache::Cache::new()
         }
     }

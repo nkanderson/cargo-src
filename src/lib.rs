@@ -43,9 +43,9 @@ pub use build::BuildArgs;
 
 mod build;
 pub mod config;
+mod highlight;
 mod file_controller;
 mod listings;
-mod highlight;
 mod server;
 
 pub fn run_server(mut build_args: BuildArgs) {

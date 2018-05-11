@@ -57,7 +57,7 @@ pub fn highlight<'a>(
     })
 }
 
-struct Highlighter<'a> {
+pub struct Highlighter<'a> {
     buf: Vec<u8>,
     analysis: &'a AnalysisHost,
     codemap: &'a CodeMap,

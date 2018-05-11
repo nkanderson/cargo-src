@@ -8,11 +8,12 @@
 
 use std::path::Path;
 
-use super::Highlighter;
+// use super::Highlighter;
+use highlight;
 use span;
 use vfs::Vfs;
 
-use super::highlight;
+// use super::highlight;
 
 pub struct Cache {
     pub files: Vfs<VfsUserData>,
@@ -59,7 +60,7 @@ impl Cache {
     pub fn get_highlighted(
         &self,
         path: &Path,
-        highlighter: &Highlighter,
+        highlighter: &highlight::Highlighter,
     ) -> Result<Vec<String>, String> {
         vfs_err!(self.files.load_file(path))?;
         vfs_err!(
