@@ -118,9 +118,14 @@ export class SourceView extends React.Component {
         this.componentDidUpdate();
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.highlight) {
             utils.highlight_spans(this.props.highlight, "src_line_number_", "src_line_", "selected", this.node);
+
+            let menuChanged = prevState ? (prevState.refMenu != this.state.refMenu) : false;
+            if (!menuChanged) {
+                jumpToLine(this.props.highlight.line_start);
+            }
         } else {
             utils.unHighlight("selected", this.node)
         }
@@ -153,10 +158,6 @@ export class SourceView extends React.Component {
         });
 
         add_ref_functionality(this);
-
-        if (this.props.highlight) {
-            jumpToLine(this.props.highlight.line_start);
-        }
     }
 
     render() {
